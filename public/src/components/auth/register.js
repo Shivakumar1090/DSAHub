@@ -22,7 +22,8 @@ const Register = ({setLoginScreen}) => {
 
         axios.post(REGISTER, newuser)
             .then(async (res) => {
-                await res.status === 200 ? toast.success(res.data.Message) : toast.warn(res.data.Message);
+                await res.status === 200 ? toast.success(res.data.Message): toast.warn(res.data.Message);
+                setLoginScreen(true);
             })
             .catch(async (err) => {
                 console.log(err);

@@ -4,10 +4,35 @@ const UserSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
+    username: String,
     problems: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "problems",
+            name: String,
+            link: String,
+            topic: {
+                type: String,
+            },
+            solved: {
+                type: Boolean,
+                default: false,
+            },
+            bookmarked: {
+                type: Boolean,
+                default: false,
+            }
+        }
+    ],
+    bookmarks: [
+        {
+            name: String,
+            link: String,
+            topic: {
+                type: String,
+            },
+            solved: {
+                type: Boolean,
+                default: false,
+            },
         }
     ]
 });

@@ -1,5 +1,5 @@
 import { Box, Modal } from "@mui/material";
-import Problems from "./problems";
+import Problems from "./topics";
 import Header from "./Header";
 import FloatingWindow from "./auth/floatingwindow";
 

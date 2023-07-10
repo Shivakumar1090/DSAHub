@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,25 +6,18 @@ import './App.css';
 import {BrowserRouter , Routes , Route} from 'react-router-dom';
 
 import Home from './components/home';
-import Login from "./components/auth/login";
-import Register from "./components/auth/register";
-import AddingForm from "./components/form";
-import TablePage from "./components/tablepage";
-
+import Createform from "./components/createform";
+import ProblemsList from "./components/problemslist";
+ 
 function App() {
-  const [isAuth, setIsAuth] = useState(
-    window.localStorage.getItem("isAuth") || false
-  );
   return (
     <div className="App">
       <ThemeProvider theme={THEME}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home/>}/>
-            {/* <Route path='/login' element={<Login />}/>
-            <Route path="/register" element={<Register />} /> */}
-            <Route path="/addproblem" element={<AddingForm />} />
-            <Route path="/topictable" element={<TablePage />} />
+            <Route path="/addproblem" element={<Createform />} />
+            <Route path="/problems/:id" element={<ProblemsList />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer

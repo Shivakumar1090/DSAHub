@@ -4,6 +4,12 @@ import { useState } from "react";
 import Register from "./register";
 
 const FloatingWindow = ({open}) => {
+    const [isAuth, setIsAuth] = useState(
+        window.localStorage.getItem("isAuth") || false
+    );
+    
+    console.log(isAuth);
+
     const [loginScreen , setLoginScreen] = useState(true);
     const auth = (
         <Box>
@@ -19,14 +25,14 @@ const FloatingWindow = ({open}) => {
                     </Box>
                 </Box>
                 <Box>
-                    {loginScreen ? <Login setLoginScreen= {setLoginScreen}/> : <Register setLoginScreen={setLoginScreen}/>}
+                    {loginScreen ? <Login setLoginScreen= {setLoginScreen} setIsAuth = {setIsAuth}/> : <Register setLoginScreen={setLoginScreen}/>}
                 </Box>
             </Box>
         </Box>
     )
     return ( 
         <Box>
-            <Modal open="open">
+            <Modal open={!isAuth} handleClose = {() => setIsAuth(true)}>
                 {auth}
             </Modal>
         </Box>

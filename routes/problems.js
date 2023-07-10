@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const CreateProblem = require('../controllers/problems/create');
-const GetUserProblems = require('../controllers/problems/get');
+const UpdateProblem = require('../controllers/problems/Update');
 
-router.get('/:id' , GetUserProblems);
 router.post('/' , CreateProblem);
-// router.delete('/problem' , );
+router.post('/update' , UpdateProblem);
 
 module.exports = router;

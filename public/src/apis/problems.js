@@ -1,5 +1,6 @@
 const { BASE_URL } = require("./client");
 
-const GET_USER_PROBLEMS = BASE_URL+"/problems";
+const CREATE_PROBLEM = BASE_URL+"/problems";
+const UPDATE_PROBLEM = BASE_URL+"/problems/update";
 
-export {GET_USER_PROBLEMS};
+export {CREATE_PROBLEM , UPDATE_PROBLEM};

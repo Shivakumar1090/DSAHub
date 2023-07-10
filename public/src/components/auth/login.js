@@ -6,7 +6,7 @@ const { container, input } = require("./styles");
 
 const { LOGIN } = require('../../apis/user');
 
-const Login = ({setLoginScreen}) => {
+const Login = ({setLoginScreen,setIsAuth}) => {
     // const Navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -21,7 +21,14 @@ const Login = ({setLoginScreen}) => {
         axios.post(LOGIN, checkuser)
             .then(async (resp) => {
                 console.log(resp);
-                resp.status === 200 ? toast.success("Successfully Logged in") : toast.warn(resp.data.Message);
+                await resp.status === 200 ? toast.success("Successfully Logged in") : toast.warn(resp.data.Message);
+                window.localStorage.setItem("isAuth" , true);
+                window.localStorage.setItem("name" , resp.data.name);
+                window.localStorage.setItem("email" , resp.data.email);
+                window.localStorage.setItem("id" , resp.data._id);
+                window.localStorage.setItem("problems" , JSON.stringify(resp.data.problems));
+                // window.location.reload(true);
+                await setIsAuth(true);
             })
             .catch(async (err) => {
                 console.log(err);
